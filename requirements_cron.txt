@@ -1,0 +1,7 @@
+python-dotenv
+waitress
+boto3
+aws
+requests
+pymysql
+peewee

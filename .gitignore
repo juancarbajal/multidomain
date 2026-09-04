@@ -1,0 +1,12 @@
+__pycache__/
+.env*
+src/multidomain/__pycache__/
+src/routes/__pycache__/
+src/.#*
+src/#*
+db/*
+#*
+.#*
+prodfiles/*.swp
+doc/*.org
+.log

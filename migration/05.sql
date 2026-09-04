@@ -1,0 +1,4 @@
+ALTER TABLE domains ADD COLUMN error text;
+ALTER TABLE domains DROP PRIMARY KEY;
+ALTER TABLE domains ADD PRIMARY KEY(company_id);
+ALTER TABLE domains ADD CONSTRAINT uq_url UNIQUE(url);

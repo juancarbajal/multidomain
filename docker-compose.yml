@@ -1,0 +1,44 @@
+version: "3.3"
+
+services:
+  mysql:
+    container_name: md_db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db_multidomain'
+      MYSQL_ROOT_PASSWORD: 'R00tP@SSw0rD'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+
+  web:
+    container_name: md_web
+    build:
+      context: .
+      dockerfile: ./web.Dockerfile
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: db_multidomain
+      DB_USERNAME: root
+      DB_PASSWORD: R00tP@SSw0rD
+    links:
+      - mysql
+  # cron:
+  #   container_name: md_cron
+  #   build:
+  #     context: .
+  #     dockerfile: ./cron.Dockerfile
+  #   restart: always
+  #   volumes:
+  #     - db:/usr/src/app/db
+
+# volumes:
+#   db:

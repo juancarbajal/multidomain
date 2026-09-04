@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-01-23 lu. 12:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Documentación de la Aplicación - Dominio Propio</title>
+<meta name="author" content="Juan Carbajal" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Documentación de la Aplicación - Dominio Propio</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5253a08">1. Objetivo</a></li>
+<li><a href="#orge24a9e1">2. Detalle de funcionalidades a implementar</a></li>
+<li><a href="#orgf84b17c">3. Manual de instalación</a>
+<ul>
+<li><a href="#org1c3192e">3.1. Requisitos del la aplicación</a></li>
+<li><a href="#orgf01299a">3.2. Proceso de instalación</a>
+<ul>
+<li><a href="#org10c0e04">3.2.1. Código fuente:</a></li>
+<li><a href="#org9d82c94">3.2.2. Configuración de la base de datos:</a></li>
+<li><a href="#orge6cff0c">3.2.3. Configuración de la aplicación:</a></li>
+<li><a href="#org56df4de">3.2.4. Configuración de Tucows</a></li>
+<li><a href="#org3c83878">3.2.5. Puesta en marcha</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4f9d286">4. API</a>
+<ul>
+<li><a href="#org2198fd5">4.1. Métodos</a>
+<ul>
+<li><a href="#org50b2d2f">4.1.1. Health (/public/v1/health)</a></li>
+<li><a href="#org263a7af">4.1.2. Validate domain (/auth/v1/domain/validate)</a></li>
+<li><a href="#org1cd86bd">4.1.3. Create domain (/internal/v1/domain/create)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org77f30a2">5. Cron</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5253a08" class="outline-2">
+<h2 id="org5253a08"><span class="section-number-2">1.</span> Objetivo</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+El objetivo del proyecto es desarrollar una aplicación (Microservicio) que permita crear dominios y conectarlos con los servidores web de Host.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge24a9e1" class="outline-2">
+<h2 id="orge24a9e1"><span class="section-number-2">2.</span> Detalle de funcionalidades a implementar</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+La aplicación tendrá las siguientes funcionalidades:
+</p>
+<ul class="org-ul">
+<li>La aplicación será un Microservicio para la creación de dominios.</li>
+<li>La aplicación creará dominios en la plataforma TUCOWS.</li>
+<li>La aplicación creará dominios y certificados SSL en AWS que serán relacionados mediante CloudFront al sistema de Host.</li>
+<li>El sistema configurará los dominios en TUCOWS para que usen los DNS de AWS de los dominos creados allí.</li>
+<li>El sistema informará diaramente mediante un reporte enviado a un correo brindado por el Host sobre el estado de los dominios que iniciaron el proceso de creación.</li>
+<li>El sistema actualizará los certificados automaticamente cada año en dominios con formato restaurante.com.pe.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf84b17c" class="outline-2">
+<h2 id="orgf84b17c"><span class="section-number-2">3.</span> Manual de instalación</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org1c3192e" class="outline-3">
+<h3 id="org1c3192e"><span class="section-number-3">3.1.</span> Requisitos del la aplicación</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Para instalación de la aplicacón se require:
+</p>
+<ul class="org-ul">
+<li>Docker.</li>
+<li>MySQL 5.7 o superior.</li>
+<li>Git.</li>
+<li>IP fijo a configurar en Tucows.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf01299a" class="outline-3">
+<h3 id="orgf01299a"><span class="section-number-3">3.2.</span> Proceso de instalación</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-org10c0e04" class="outline-4">
+<h4 id="org10c0e04"><span class="section-number-4">3.2.1.</span> Código fuente:</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+Descargar el código fuente de:
+<a href="https://gitlab.com/aitodev/qlickmenu/micro-services/domain-registration">https://gitlab.com/aitodev/qlickmenu/micro-services/domain-registration</a>
+en la ubicación del servidor. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d82c94" class="outline-4">
+<h4 id="org9d82c94"><span class="section-number-4">3.2.2.</span> Configuración de la base de datos:</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+Cree una base de datos en MySQL con collation utf-8
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql" id="org4ad90e0">create database db_multidomain character set utf8
+</pre>
+</div>
+
+<p>
+Guarde el host, puerto, y credenciales de acceso para los siguientes pasos. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge6cff0c" class="outline-4">
+<h4 id="orge6cff0c"><span class="section-number-4">3.2.3.</span> Configuración de la aplicación:</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+En la carpeta de la aplicación crear el archivo .env el cual puede ser copiado de .env.sample :
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org06d8776">cp .env.sample .env
+</pre>
+</div>
+
+<p>
+Luego editamos el archivo .env con los valores requeridos
+</p>
+
+<div class="org-src-container">
+<pre class="src src-conf" id="org9d86a84">APP_VERSION=1.0.0
+PORT=Puerto por donde correra el servicio web
+AWS_ACCESS_KEY= AWS access key para conectarse al cli de AWS
+AWS_SECRET_KEY= AWS secret key to connect with aws cli
+TUCOWS_RESELLER_USERNAME= Usuario de acceso Tucows
+TUCOWS_API_KEY= API key de acceso a Tucows  
+TUCOWS_API_HOST_PORT= URL de acceso a Tucows
+MASTER_CLIENT_USER= Usuario por defecto para acceso de los dominios creados 
+MASTER_CLIENT_PASS= Clave de acceso por defecto para acceso a los dominios creados  
+MASTER_CLIENT_DEFAULT_PERIOD= Periodo por defecto de creación del dominio 1: año, 2: 2 años, 3: 3 años 2 años, 3 = 3 años&gt;
+MASTER_CLOUDFRONT_ID= Id del dominio a configurar en Cloudfront, puede poner la url del ELB de Host
+MASTER_CLOUDFRONT_DOMAINNAME= Url del dominio a configurar en Cloudfront, puede poner la url del ELB del Host
+MASTER_CLOUDFRONT_TARGETORIGINID= Url de el host destino a configurar en Cloudfront, puede poner la url del ELB del Host
+PANEL_API_URL= Url de Host para ifnromar del estado del dominio
+ALLOWED_ORIGINS= Urls que tienen acceso a los servicios web. Ejm: * (Todos), http://web1.com,http://web2.com
+DB_HOST= Host de la base de datos 
+DB_PORT= Puerto de conexión de la base de datos  
+DB_DATABASE= Nombre de la base de datos a conectarse 
+DB_USERNAME= Usuario de acceso a la base de datos
+DB_PASSWORD= Clave de acceso a la base de datos  
+</pre>
+</div>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgd219840"></a>Entorno de desarrollo<br />
+<div class="outline-text-5" id="text-3-2-3-1">
+<p>
+Los datos para el entorno de desarrollo de Tuwocs serían:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-conf">TUCOWS_RESELLER_USERNAME=<tucows username>
+TUCOWS_API_KEY=<tucows api key>
+TUCOWS_API_HOST_PORT=https://horizon.opensrs.net:55443
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org1fa8dac"></a>Entorno de producción<br />
+<div class="outline-text-5" id="text-3-2-3-2">
+<p>
+Los datos para el entorno de producción de Tucows serían:
+</p>
+<div class="org-src-container">
+<pre class="src src-conf">TUCOWS_RESELLER_USERNAME=<tucows username>
+TUCOWS_API_KEY=<tucows api key>
+TUCOWS_API_HOST_PORT=https://rr-n1-tor.opensrs.net:55443
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org56df4de" class="outline-4">
+<h4 id="org56df4de"><span class="section-number-4">3.2.4.</span> Configuración de Tucows</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<p>
+Para configurar Tucows es necesario acceder a Tucows en la URL <a href="https://opensrs.com/integrations/api/">https://opensrs.com/integrations/api/</a> , esta url nos brinda la opción de acceder al entorno de desarrollo y producción
+</p>
+
+<div id="org1a37164" class="figure">
+<p><img src="./img/tucows_dev_env.png" alt="tucows_dev_env.png" width="500px" />
+</p>
+</div>
+
+<p>
+En el entorno de producción es necesario añadir añadir la IP que tendra permisos para llamar al API de Tucows, esto se realiza en <a href="https://manage.opensrs.com/#!/account/API">Account Setting &gt; API Key</a>
+</p>
+
+<div id="org71682b8" class="figure">
+<p><img src="./img/tucows_api_prod.png" alt="tucows_api_prod.png" width="700px" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c83878" class="outline-4">
+<h4 id="org3c83878"><span class="section-number-4">3.2.5.</span> Puesta en marcha</h4>
+<div class="outline-text-4" id="text-3-2-5">
+<p>
+Luego de configurada la aplicación podemos ejecutarla utilizando Docker: 
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">docker run -p 5000:5000 --restart always --name md_one_server --link multi-mysql:db md_one
+</pre>
+</div>
+
+<p>
+Realizamos una prueba rápida de la aplicación:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-powershell">curl --location --request GET 'http://localhost:5000/public/v1/health'  
+</pre>
+</div>
+
+<p>
+como respuesta tendremos
+</p>
+<div class="org-src-container">
+<pre class="src src-js">{
+		"message": "Domain Registration service v1.0.0"
+}
+</pre>
+</div>
+
+<p>
+El último valor del mensaje nos debe indicar la versión con la que se esta trabajando. 
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f9d286" class="outline-2">
+<h2 id="org4f9d286"><span class="section-number-2">4.</span> API</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org2198fd5" class="outline-3">
+<h3 id="org2198fd5"><span class="section-number-3">4.1.</span> Métodos</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-org50b2d2f" class="outline-4">
+<h4 id="org50b2d2f"><span class="section-number-4">4.1.1.</span> Health (/public/v1/health)</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+Valida el estado del API
+</p>
+
+<ul class="org-ul">
+<li>Forma de uso</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash">curl --location --request GET 'http://localhost:5000/public/v1/health'  
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Parámetros de envío</li>
+</ul>
+<p>
+Ninguno 
+</p>
+
+<ul class="org-ul">
+<li>Respuesta</li>
+</ul>
+<p>
+Status code 200
+</p>
+<div class="org-src-container">
+<pre class="src src-js">{
+		"message": "Domain Registration service v1.0.0"
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org263a7af" class="outline-4">
+<h4 id="org263a7af"><span class="section-number-4">4.1.2.</span> Validate domain (/auth/v1/domain/validate)</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+Valida si el dominio esta libre para su uso. 
+</p>
+
+<ul class="org-ul">
+<li>Forma de uso:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash">curl --location --request POST 'http://localhost:5000/auth/v1/domain/validate' \
+--header 'content-type: application/json' \
+--data-raw '{
+
+		"domain" :"mydomain.online"
+}'
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Parámetros de envío
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parámetro</th>
+<th scope="col" class="org-left">Tipo</th>
+<th scope="col" class="org-right">Tamaño</th>
+<th scope="col" class="org-left">Requerido</th>
+<th scope="col" class="org-left">Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">domain</td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Dominio a verificar</td>
+</tr>
+</tbody>
+</table></li>
+
+<li>Respuesta</li>
+</ul>
+
+<p>
+Status code 200: Dominio libre
+</p>
+<div class="org-src-container">
+<pre class="src src-js">{
+		"message": "Ok"
+}
+</pre>
+</div>
+
+<p>
+Status code 400: Dominio ocupado
+</p>
+<div class="org-src-container">
+<pre class="src src-js">{
+		"message": "Domain taken"
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1cd86bd" class="outline-4">
+<h4 id="org1cd86bd"><span class="section-number-4">4.1.3.</span> Create domain (/internal/v1/domain/create)</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<p>
+Inicia el proceso de creación de un dominio
+</p>
+
+<ul class="org-ul">
+<li>Forma de uso</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash">curl --location --request POST 'http://localhost:5000/internal/v1/domain/create' \
+--header 'content-type: application/json' \
+--data-raw '{
+		"domain" :"mydomain.com",
+		"company_id": "AA001",
+		"first_name": "Juan",
+		"last_name": "Carbajal",
+		"phone" : "+51.952713764",
+		"fax" : "+051.952713764",
+		"email" : "juancarbajal@gmail.com",
+		"org_name": "Juan Carbajal",
+		"address1": "Belaunde 353",
+		"address2": "Trujillo",
+		"address3": "",                 
+		"city": "Trujillo",
+		"state": "Trujillo",
+		"country": "PE",
+		"postal_code": "00001"
+}'
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li><p>
+Parámetros de envío
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parametro</th>
+<th scope="col" class="org-left">Tipo</th>
+<th scope="col" class="org-right">Tamaño</th>
+<th scope="col" class="org-left">Requerido</th>
+<th scope="col" class="org-left">Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">domain</td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Dominio a registrar</td>
+</tr>
+
+<tr>
+<td class="org-left">company<sub>id</sub></td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Identificador del comercio o compañía</td>
+</tr>
+
+<tr>
+<td class="org-left">first<sub>name</sub></td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Primer nombre del comprador</td>
+</tr>
+
+<tr>
+<td class="org-left">last<sub>name</sub></td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Apellido del comprador</td>
+</tr>
+
+<tr>
+<td class="org-left">phone</td>
+<td class="org-left">cadena</td>
+<td class="org-right">20</td>
+<td class="org-left">x</td>
+<td class="org-left">Telefono del comprador con formato +&lt;codigo pais&gt;.&lt;número&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left">fax</td>
+<td class="org-left">cadena</td>
+<td class="org-right">20</td>
+<td class="org-left">x</td>
+<td class="org-left">Número de fax del comprador, Puede ser el mismo que el teléfono</td>
+</tr>
+
+<tr>
+<td class="org-left">email</td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Correo electronico del comprador</td>
+</tr>
+
+<tr>
+<td class="org-left">org<sub>name</sub></td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Nombre del comercio o compañía</td>
+</tr>
+
+<tr>
+<td class="org-left">address1</td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Dirección de comercio o compañía</td>
+</tr>
+
+<tr>
+<td class="org-left">address2</td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Dirección 2 del comercio o compañía (segunda parte de la dirección)</td>
+</tr>
+
+<tr>
+<td class="org-left">city</td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Nombre de la ciudad</td>
+</tr>
+
+<tr>
+<td class="org-left">state</td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Código de 2 letras del estado del comercio o compañía</td>
+</tr>
+
+<tr>
+<td class="org-left">country</td>
+<td class="org-left">cadena</td>
+<td class="org-right">2</td>
+<td class="org-left">x</td>
+<td class="org-left">Código ISO del pais del comercio o compañía</td>
+</tr>
+
+<tr>
+<td class="org-left">postal<sub>code</sub></td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">x</td>
+<td class="org-left">Código postal del comercio o compañía</td>
+</tr>
+
+<tr>
+<td class="org-left">document<sub>type</sub></td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Tipo de documento requerido en méxico (curp, ci), argentina (dni, cuit)</td>
+</tr>
+
+<tr>
+<td class="org-left">document<sub>number</sub></td>
+<td class="org-left">cadena</td>
+<td class="org-right">64</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Número de documento, requerido en brazil (cpnj) y argentina</td>
+</tr>
+</tbody>
+</table></li>
+
+<li><p>
+Respuesta
+</p>
+
+<p>
+Status code 200: Proceso iniciado con exito
+</p>
+
+<p>
+Status code 400: Proceso fallo al iniciarse
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org77f30a2" class="outline-2">
+<h2 id="org77f30a2"><span class="section-number-2">5.</span> Cron</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+El cron es el encargado de realizar el proceso de creación de los dominios.
+</p>
+
+<p>
+Cada 5 minutos revisa el estado actual de las peticiones y continua con el proceso de creación y configuración del dominio.
+</p>
+
+<p>
+Para revisar el estado de logs
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">docker logs &lt;container id&gt;
+</pre>
+</div>
+
+<p>
+Para ver el id del contenedor ubicarlo utilizando "docker container ls"
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Juan Carbajal</p>
+<p class="date">Created: 2023-01-23 lu. 12:55</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+@startuml
+actor Client
+autonumber
+autoactivate on
+
+title Search domain
+'Search Domain
+Client -> Front: Search Domain
+Front -> ws.panel: Search Domain
+ws.panel -> ws.domain: Search Domain
+ws.domain -> Tucows: Search domain
+alt successful case
+		Tucows --> ws.domain: Domain libre
+		ws.domain --> ws.panel: Domain Libre
+		ws.panel --> Front: Domain Libre
+		else failure
+		ws.domain -> Tucows: Domains sugeridos
+		Tucows -> ws.domain: Domain sugested
+		ws.domain --> ws.panel: Domain sugested
+		ws.panel --> Front: Domain sugerido
+end
+
+newpage Register domain
+'Registrar dominio
+Client -> Front: Register Domain
+Front -> ws.panel: Register Domain
+ws.panel -> ws.domain: Register Domain
+ws.domain -> ws.domain: Search domain
+alt successful case
+		ws.domain -> Tucows: Register domain
+		Tucows --> ws.domain: Domain registered
+		ws.domain --> ws.panel: Domain Registered
+		ws.panel --> Front: Domain Registered
+		else failure
+		ws.domain --> ws.panel: Domain taken
+		ws.panel --> Front: Domain taken
+end
+
+newpage Cron
+'Cron de registro de dominio
+cr.domain -> cr.domain: list domains pendings
+loop number of domain pendings
+		alt initiated
+		cr.domain -> Aws: Create domain
+		Aws --> cr.domain: domain created
+		cr.domain -> cr.domain: update status to route53_created
+		else route53_created
+		cr.domain -> Aws: get DNS
+		Aws --> cr.domain: DNS info
+		cr.domain --> Tucows: Create domain with new DNS
+		Tucows --> cr.domain: domain created 
+     	cr.domain -> cr.domain: update status to tucows_created
+		else tucows_created
+		cr.domain -> Aws: Create certificate
+		Aws --> cr.domain: SSL init process of creation
+ 		cr.domain -> cr.domain: update status to acm_created
+		else acm_created
+		cr.domain -> Aws: get certificate info
+		Aws --> cr.domain: certificate info
+ 		cr.domain -> Aws: write route53 record to validate ssl
+		Aws -> cr.domain: record writed
+		cr.domain -> cr.domain: update status to route53_updated
+		else route53_updated
+		cr.domain -> Aws: validate ssl status
+		Aws --> cr.domain: SSL valided
+		cr.domain -> cr.domain: update status to acm_validated
+		else acm_validated
+		cr.domain -> Aws: create cloudfront
+		Aws --> cr.domain: cloudfront_created
+		cr.domain -> cr.domain: update status to cloudfront_created
+		else cloudfront_created
+		cr.domain -> Aws: update route53 with cloudfront records
+		Aws --> cr.domain: record updated
+		cr.domain -> cr.domain: update status to finished
+		end 
+end
+
+newpage Get info of a domain
+Front -> ws.domain: Get info of a company id
+alt successful
+		ws.domain --> Front: info of domain 
+		else failure
+		ws.domain --> Front: no exist 
+end
+
+
+newpage Update info of a domain
+Front -> ws.domain: update info of the domain
+ws.domain --> Front: Domain registered 
+
+@enduml
+		

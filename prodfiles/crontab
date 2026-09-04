@@ -1,0 +1,3 @@
+*/3 * * * * python "/usr/src/app/src/cron.py"
+50 23 * * * python "/usr/src/app/src/report.py"
+

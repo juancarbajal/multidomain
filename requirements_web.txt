@@ -1,0 +1,12 @@
+flask
+python-dotenv
+Flask-JWT-Extended
+Flask-Bcrypt
+Flask-Cors
+flask-expects-json
+waitress
+boto3
+aws
+requests
+peewee
+playhouse
